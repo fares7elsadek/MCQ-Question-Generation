@@ -6,7 +6,7 @@ from app.modules.text_cleaning import clean_text
 from app.models.answer_generation.answer_generation import AnswerGenerator
 from app.models.distractor_generation.distractor_generation import *
 from app.models.question_generation.question_generation import *
-# from app.models.sense2vec_distractor_generation.sense2vec import *
+from app.models.sense2vec_distractor_generation.sense2vec import *
 from app.models.question import Question
 import time
 
@@ -21,8 +21,8 @@ class MCQGenerator():
         self.distractor_generator = DistractorGenerator()
         print('Loaded DistractorGenerator in', round(time.perf_counter() - start_time, 2), 'seconds.') if is_verbose else ''
 
-        # self.sense2vec_distractor_generator = Sense2VecDistractorGeneration()
-        # print('Loaded Sense2VecDistractorGenerator in', round(time.perf_counter() - start_time, 2), 'seconds.') if is_verbose else ''
+        self.sense2vec_distractor_generator = Sense2VecDistractorGeneration()
+        print('Loaded Sense2VecDistractorGenerator in', round(time.perf_counter() - start_time, 2), 'seconds.') if is_verbose else ''
 
     # Main function
     def generate_mcq_questions(self, context: str, desired_count: int) -> List[Question]:
@@ -72,7 +72,11 @@ class MCQGenerator():
     def _generate_distractors(self, context: str, questions: List[Question]) -> List[Question]:
         for question in questions:
             t5_distractors =  self.distractor_generator.generate(5, question.answerText, question.questionText, context)
-            distractors = t5_distractors
+            if len(t5_distractors) < 3:
+                s2v_distractors = self.sense2vec_distractor_generator.generate(question.answerText, 3)
+                distractors = t5_distractors + s2v_distractors
+            else:
+                distractors = t5_distractors
             distractors = remove_duplicates(distractors)
             distractors = remove_distractors_duplicate_with_correct_answer(question.answerText, distractors)
             question.distractors = distractors

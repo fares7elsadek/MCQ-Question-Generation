@@ -1,0 +1,4 @@
+kaggle datasets download pedromoya/sense2vec-reddit-2015-dataset-spacy-model
+sense2vec
+nlt
+transformers

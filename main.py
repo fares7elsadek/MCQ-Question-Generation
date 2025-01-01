@@ -1,7 +1,8 @@
 import textwrap
 
 from app.mcq_question_generation import MCQGenerator
-
+import nltk
+nltk.download('punkt_tab')
 
 def show_result(generated: str, answer: str, context:str, original_question: str = ''):
     
