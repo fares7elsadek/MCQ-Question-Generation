@@ -1,0 +1,60 @@
+----------------------------------------
+Question 1:
+Q1:  Virtual memory creates an illusion of having more RAM than physically available by using disk space as an extension of the main memory?
+Choices:
+  A) A paging system
+  B) More RAM is needed
+  C) Physical RAM
+Correct Answer: Memory management
+----------------------------------------
+
+----------------------------------------
+Question 2:
+Q2:  How many processes does a computer run simultaneously?
+Choices:
+  A) One
+  B) Two
+  C) Three
+Correct Answer: Multiple
+----------------------------------------
+
+----------------------------------------
+Question 3:
+Q3:  What is a paging system called?
+Choices:
+  A) The processs memory
+  B) The page table
+  C) The memory management unit
+Correct Answer: The process's address space
+----------------------------------------
+
+----------------------------------------
+Question 4:
+Q4:  Who handles the complex task of translating virtual addresses into physical addresses in RAM?
+Choices:
+  A) Virtual memory
+  B) CopyRetryClaude
+  C) Page table
+Correct Answer: Memory management unit
+----------------------------------------
+
+----------------------------------------
+Question 5:
+Q5:  What prevents one program from accidentally accessing another's memory space?
+Choices:
+  A) Physical memory
+  B) Memory space
+  C) Page table
+Correct Answer: Memory isolation
+----------------------------------------
+
+----------------------------------------
+Question 6:
+Q6:  What happens when a process attempts to access a page that isn't currently in RAM?
+Choices:
+  A) The operating system updates the page table
+  B) The application is restarted
+  C) The application is stopped
+Correct Answer: The operating system interrupts the process
+----------------------------------------
+
